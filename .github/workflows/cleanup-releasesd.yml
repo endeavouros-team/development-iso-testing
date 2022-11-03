@@ -3,7 +3,7 @@ name: remove old releases and tags
 # Controls when the workflow will run
 on:
   schedule:
-    - cron: "0 */4 * * *"
+    - cron: "0 */2 * * *"
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -19,7 +19,7 @@ jobs:
     steps:
     - uses: dev-drprasad/delete-older-releases@v0.2.0
       with:
-        keep_latest: 2
+        keep_latest: 1
         delete_tags: true
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
