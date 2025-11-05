@@ -56,12 +56,12 @@ We need real hardware testing on as many different machines as possible, special
 
 ## If you post logs give the info on how you set up the install:
 
-installed DE/WM
-Partions:
-auto/manual
-Filesystem
-Encyption
-UEFI/Bios
+* installed DE/WM
+* Partions:
+* auto/manual
+* Filesystem
+* Encyption
+* UEFI/Bios
 
 If installed on real hardware the hardware info:
 
