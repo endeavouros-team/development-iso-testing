@@ -12,7 +12,7 @@ These files are not intended for real use, they can contain errors and lead to d
 
 If you want to contribute to testing upcoming ISO changes and help us iron the ISO and installer framework:
 Join testing by simply asking to get into the ISO devel group at the forum:
-https://forum.endeavouros.com/t/we-always-welcome-testers-for-the-iso-development/27835/10
+https://forum.endeavouros.com/t/we-always-welcome-testers-for-the-iso-development
 
 First of all, main testing for features and general install process can be done virtual in a virtual machine:
 
