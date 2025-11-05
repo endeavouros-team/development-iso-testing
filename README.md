@@ -1,11 +1,9 @@
 # development-iso-testing
-Releases for ISO testers
 
-In the Releases you will find latest Development ISO to Download.
 # The big request:
 
 Please **do not** post links to the development versions of the ISOS or screenshots.
-And also do not write about what we are working on here unless we have agreed to do so.
+And also do not write about what we are working on internal unless we have agreed to do so.
 
 # ISO development pre-releases only for testing purposes.
 These files are not intended for real use, they can contain errors and lead to data loss.
