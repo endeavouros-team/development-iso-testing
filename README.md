@@ -44,7 +44,7 @@ will give such output with the short URL you can share:
 
 ![sendlog](https://forum.endeavouros.com/uploads/default/original/3X/4/a/4a2c813f30408b92ec7859a22c76be1eee73fa5a.png)
 
-The general part is about using the Desktop as a user.. doing updates using EndeavourOS tools e.t.c. But in general, we will ask for specific tests in the related post.
+We will ask for specific tests in the related post.
 
 It is always firmly requested to see test installs on real hardware if you can!
 
