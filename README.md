@@ -1,7 +1,6 @@
 # development-iso-testing
 
-# The big request:
-
+**The big request:**
 Please **do not** post links to the development versions of the ISOS or screenshots.
 And also do not write about what we are working on internal unless we have agreed to do so.
 
