@@ -10,9 +10,6 @@ And also do not write about what we are working on here unless we have agreed to
 # ISO development pre-releases only for testing purposes.
 These files are not intended for real use, they can contain errors and lead to data loss.
 
-From now (11. Aug 2020) providing sha512sum for checking file integrity:
-`sha512sum -c endeavouros-devel-2021.04.14-x86_64.iso.sha512sum`
-
 If you want to contribute to testing upcoming ISO changes and help us iron the ISO and installer framework:
 Join testing by simply asking to get into the ISO devel group at the forum:
 https://forum.endeavouros.com/t/we-always-welcome-testers-for-the-iso-development/27835/10
