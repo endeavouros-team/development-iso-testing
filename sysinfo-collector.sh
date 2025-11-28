@@ -3,7 +3,7 @@
 # Modular, interactive or non-interactive with options.
 # Can save locally or upload via eos-sendlog.
 
-SCRIPT_VERSION="1.3"
+SCRIPT_VERSION="1.4"
 timestamp=$(date +"%Y-%m-%d_%H-%M-%S")
 outfile="/tmp/sysreport-$timestamp.txt"
 
@@ -125,7 +125,7 @@ echo "====================================="
 ###########################
 
 # NVIDIA
-if ($DO_NVIDIA) || ask "Collect NVIDIA information?"; then
+if [ "$DO_NVIDIA" = true ] || ask "Collect NVIDIA information?"; then
     add_header "NVIDIA: inxi -Gaz"
     inxi -Gaz >> "$outfile" 2>&1
     add_header "NVIDIA: pacman -Qs nvidia"
@@ -133,7 +133,7 @@ if ($DO_NVIDIA) || ask "Collect NVIDIA information?"; then
 fi
 
 # Intel
-if ($DO_INTEL) || ask "Collect Intel GPU information?"; then
+if [ "$DO_INTEL" = true ] || ask "Collect Intel GPU information?"; then
     add_header "Intel: inxi -Gaz"
     inxi -Gaz >> "$outfile" 2>&1
     add_header "Intel: pacman -Qs intel"
@@ -141,7 +141,7 @@ if ($DO_INTEL) || ask "Collect Intel GPU information?"; then
 fi
 
 # Broadcom
-if ($DO_BROADCOM) || ask "Collect Broadcom WiFi information?"; then
+if [ "$DO_BROADCOM" = true ] || ask "Collect Broadcom WiFi information?"; then
     add_header "Broadcom: inxi -Naz"
     inxi -Naz >> "$outfile" 2>&1
     add_header "Broadcom: pacman -Qs broadcom"
@@ -149,13 +149,13 @@ if ($DO_BROADCOM) || ask "Collect Broadcom WiFi information?"; then
 fi
 
 # Installer log
-if ($DO_INSTALLER) || ask "Collect EndeavourOS installer log? (requires sudo)"; then
+if [ "$DO_INSTALLER" = true ] || ask "Collect EndeavourOS installer log? (requires sudo)"; then
     add_header "Installer Log: /var/log/endeavour-install.log"
     sudo cat /var/log/endeavour-install.log >> "$outfile" 2>&1
 fi
 
 # Partition info
-if ($DO_PARTITIONS) || ask "Collect partition info? (requires sudo)"; then
+if [ "$DO_PARTITIONS" = true ] || ask "Collect partition info? (requires sudo)"; then
     add_header "Partition Info: fdisk -l"
     sudo fdisk -l >> "$outfile" 2>&1
     add_header "Partition Info: /etc/fstab"
@@ -163,13 +163,13 @@ if ($DO_PARTITIONS) || ask "Collect partition info? (requires sudo)"; then
 fi
 
 # Boot log
-if ($DO_BOOT) || ask "Collect boot log (journalctl -b -0)?"; then
+if [ "$DO_BOOT" = true ] || ask "Collect boot log (journalctl -b -0)?"; then
     add_header "Boot Log: journalctl -b -0"
     journalctl -b -0 >> "$outfile" 2>&1
 fi
 
 # Installed packages
-if ($DO_PACKAGES) || ask "Collect installed packages list?"; then
+if [ "$DO_PACKAGES" = true ] || ask "Collect installed packages list?"; then
     add_header "Installed Packages: pacman -Qq"
     pacman -Qq >> "$outfile" 2>&1
 fi
