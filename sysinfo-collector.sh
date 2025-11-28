@@ -3,7 +3,7 @@
 # Modular, interactive or non-interactive with options.
 # Can save locally or upload via eos-sendlog.
 
-SCRIPT_VERSION="1.6"
+SCRIPT_VERSION="1.7"
 timestamp=$(date +"%Y-%m-%d_%H-%M-%S")
 outfile="/tmp/sysreport-$timestamp.txt"
 
@@ -27,6 +27,7 @@ show_help() {
     echo "  -part,--partitions   Collect partitions and fstab info"
     echo "  -boot,--bootlog      Collect boot log (journalctl -b -0)"
     echo "  -pkg, --packages     Collect installed packages list"
+    echo "  -custom, --custom    Collect custom log (placeholder)"
     echo "  -all, --all          Collect everything"
     echo
     echo "Output options:"
@@ -49,6 +50,7 @@ DO_INSTALLER=false
 DO_PARTITIONS=false
 DO_BOOT=false
 DO_PACKAGES=false
+DO_CUSTOM=false
 
 FORCE_LOCAL=false
 FORCE_PASTEBIN=false
@@ -68,6 +70,7 @@ if [[ $# -gt 0 ]]; then
             -part|--partitions) DO_PARTITIONS=true ;;
             -boot|--bootlog) DO_BOOT=true ;;
             -pkg|--packages) DO_PACKAGES=true ;;
+            -custom|--custom) DO_CUSTOM=true ;;
             -all|--all)
                 DO_NVIDIA=true
                 DO_INTEL=true
@@ -76,6 +79,7 @@ if [[ $# -gt 0 ]]; then
                 DO_PARTITIONS=true
                 DO_BOOT=true
                 DO_PACKAGES=true
+                DO_CUSTOM=true
             ;;
             --local) FORCE_LOCAL=true ;;
             --pastebin) FORCE_PASTEBIN=true ;;
@@ -175,6 +179,19 @@ fi
 if [ "$DO_PACKAGES" = true ] || ask "Collect installed packages list?"; then
     add_header "Installed Packages: pacman -Qq"
     pacman -Qq >> "$outfile" 2>&1
+fi
+
+# CUSTOM LOG PLACEHOLDER
+collect_custom_log() {
+    # Replace this with your actual commands
+    # Example:
+    # add_header "Custom Log: /path/to/custom.log"
+    # cat /path/to/custom.log >> "$outfile" 2>&1
+    :
+}
+
+if [ "$DO_CUSTOM" = true ] || ask "Collect custom log?"; then
+    collect_custom_log
 fi
 
 ###########################
