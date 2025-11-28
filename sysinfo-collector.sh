@@ -4,7 +4,7 @@
 # It is modular and easy to extend with new questions.
 # The final report can be saved locally or uploaded via filebin.
 
-timestamp=$(date +"%Y%m%d-%H%M%S")
+timestamp=$(date +"%Y-%m-%d_%H-%M-%S")
 outfile="/tmp/sysreport-$timestamp.txt"
 
 echo "=== System Information Collector ==="
