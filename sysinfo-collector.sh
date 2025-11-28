@@ -88,7 +88,7 @@ read -rp "Upload to filebin (curl) instead of local file? (y/n): " upload
 if [[ "$upload" =~ ^[Yy]$ ]]; then
     echo "Uploading..."
     # example filebin (you can replace with your preferred service)
-    result=$(curl -s -F "file=@$outfile" https://filebin.net)
+    result=$(curl -s -F "file=@$outfile" https://0x0.st)
     echo "Upload result:"
     echo "$result"
 else
