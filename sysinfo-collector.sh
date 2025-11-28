@@ -1,5 +1,5 @@
 #!/bin/bash
-# All comments and prompts are in English.
+# log and sysinfo collector for ISO-testers
 # This script collects various system information after asking the user.
 # It is modular and easy to extend with new questions.
 # The final report can be saved locally or uploaded via filebin.
