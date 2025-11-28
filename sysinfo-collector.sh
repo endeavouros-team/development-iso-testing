@@ -3,7 +3,7 @@
 # Modular, interactive or non-interactive with options.
 # Can save locally or upload via eos-sendlog.
 
-SCRIPT_VERSION="1.4"
+SCRIPT_VERSION="1.6"
 timestamp=$(date +"%Y-%m-%d_%H-%M-%S")
 outfile="/tmp/sysreport-$timestamp.txt"
 
@@ -96,8 +96,9 @@ fi
 ### SUPPORT FUNCTIONS #####
 ###########################
 
+# Ask user (interactive only)
 ask() {
-    if ! $INTERACTIVE; then return 0; fi
+    if ! $INTERACTIVE; then return 1; fi  # <-- non-interactive: always false
     read -rp "$1 (y/n): " ans
     [[ "$ans" =~ ^[Yy]$ ]]
 }
@@ -124,18 +125,20 @@ echo "====================================="
 ### COLLECTION TASKS ######
 ###########################
 
-# NVIDIA
-if [ "$DO_NVIDIA" = true ] || ask "Collect NVIDIA information?"; then
-    add_header "NVIDIA: inxi -Gaz"
+# GPU info (inxi -Gaz) only once
+if [ "$DO_NVIDIA" = true ] || [ "$DO_INTEL" = true ] || ask "Collect GPU information?"; then
+    add_header "GPU Info: inxi -Gaz"
     inxi -Gaz >> "$outfile" 2>&1
+fi
+
+# NVIDIA packages
+if [ "$DO_NVIDIA" = true ]; then
     add_header "NVIDIA: pacman -Qs nvidia"
     pacman -Qs nvidia >> "$outfile" 2>&1
 fi
 
-# Intel
-if [ "$DO_INTEL" = true ] || ask "Collect Intel GPU information?"; then
-    add_header "Intel: inxi -Gaz"
-    inxi -Gaz >> "$outfile" 2>&1
+# Intel packages
+if [ "$DO_INTEL" = true ]; then
     add_header "Intel: pacman -Qs intel"
     pacman -Qs intel >> "$outfile" 2>&1
 fi
