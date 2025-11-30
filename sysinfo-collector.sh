@@ -157,8 +157,17 @@ fi
 
 # Installer log
 if [ "$DO_INSTALLER" = true ] || ask "Collect EndeavourOS installer log? (requires sudo)"; then
-    add_header "Installer Log: /var/log/endeavour-install.log"
-    sudo cat /var/log/endeavour-install.log >> "$outfile" 2>&1
+    add_header "Installer Log"
+    
+    if [ -f /var/log/endeavour-install.log ]; then
+        # Use the system log if it exists
+        sudo cat /var/log/endeavour-install.log >> "$outfile" 2>&1
+    elif [ -f /home/liveuser/endeavour-install.log ]; then
+        # Fallback to user's log if system log doesn't exist
+        cat /home/liveuser/endeavour-install.log >> "$outfile" 2>&1
+    else
+        echo "No installer log found." >> "$outfile"
+    fi
 fi
 
 # Partition info
